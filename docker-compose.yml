@@ -1,0 +1,31 @@
+services:
+  db-tarunno:
+    image: mysql:8.0
+    container_name: db-tarunno
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: adminTarunno
+      MYSQL_DATABASE: tarunno
+      MYSQL_USER: app
+      MYSQL_PASSWORD: adminTarunno
+    ports:
+      - "3307:3306"
+    volumes:
+      - m-tarunno-db:/var/lib/mysql
+
+  server-tarunno:
+    build:
+      context: .
+    container_name: m-tarunno-server
+    restart: always
+    ports:
+      - "5001:5001"
+    env_file:
+      - .env
+    depends_on:
+      - db-tarunno
+    volumes:
+      - .:/app
+
+volumes:
+  m-tarunno-db:
