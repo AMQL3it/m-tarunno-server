@@ -2,10 +2,10 @@
 
 A full-stack application to manage a newsportal. It includes:
 
-🖥️ Web Frontend: Built with React.js
-📱 Mobile App: Built with React Native (Expo)
-🌐 Backend: Node.js with Express.js
-🗃️ Database: MySQL using Sequelize ORM
+- 🖥️ Web Frontend: Built with React.js
+- 📱 Mobile App: Built with React Native (Expo)
+- 🌐 Backend: Node.js with Express.js
+- 🗃️ Database: MySQL using Sequelize ORM
 
 ---
 
