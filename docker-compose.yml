@@ -4,12 +4,14 @@ services:
     container_name: db-tarunno
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: adminTarunno
-      MYSQL_DATABASE: tarunno
-      MYSQL_USER: app
-      MYSQL_PASSWORD: adminTarunno
+      MYSQL_ROOT_PASSWORD: jzXkIECYRqDmssCLNzEcDtMdIKXRErTq
+      MYSQL_DATABASE: railway
+      MYSQL_USER: root
+      MYSQL_PASSWORD: jzXkIECYRqDmssCLNzEcDtMdIKXRErTq
+      MYSQLHOST: mysql.railway.internal
+      MYSQLPORT: 3306
     ports:
-      - "3307:3306"
+      - "3306:3306"
     volumes:
       - m-tarunno-db:/var/lib/mysql
 
