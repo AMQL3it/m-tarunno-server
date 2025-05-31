@@ -59,9 +59,9 @@ const authController = {
       const result = await userService.create(req.body);
       loggin.info("New post created successfully.");
       res.status(200).json({
-        success: result.success,
-        data: result,
-        message: result.message,
+        success: true,
+        // data: result,
+        message: "User created successfully.",
       });
     } catch (err) {
       res.status(400).json({ error: err.message });
