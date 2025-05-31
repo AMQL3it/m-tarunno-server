@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const postRepository = require("./repository");
 const {
   calculateSeoScore,
@@ -11,7 +13,20 @@ const postService = {
     const filePath = req.file?.path;
     try {
       if (req.file) {
-        req.body.image = req.file.path;
+        // 🟡 Imgur Upload Logic
+        const imageBase64 = req.file.buffer.toString("base64");
+        const imgurRes = await axios.post(
+          "https://api.imgur.com/3/image",
+          { image: imageBase64, type: "base64" },
+          {
+            headers: {
+              Authorization: `Client-ID ${process.env.IMGUR_CLIENT_ID}`,
+            },
+          }
+        );
+
+        imgurLink = imgurRes.data.data.link;
+        req.body.image = imgurLink; // DB-তে এই URL সেভ হবে
       }
 
       const seo_score = calculateSeoScore(req.body.title, req.body.content);

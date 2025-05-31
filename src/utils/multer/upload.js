@@ -17,13 +17,14 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname);
     const now = new Date();
-    const formattedDate = now.getFullYear().toString()
-        + (now.getMonth() + 1).toString().padStart(2, '0')
-        + now.getDate().toString().padStart(2, '0')
-        + "_"
-        + now.getHours().toString().padStart(2, '0')
-        + now.getMinutes().toString().padStart(2, '0')
-        + now.getSeconds().toString().padStart(2, '0');
+    const formattedDate =
+      now.getFullYear().toString() +
+      (now.getMonth() + 1).toString().padStart(2, "0") +
+      now.getDate().toString().padStart(2, "0") +
+      "_" +
+      now.getHours().toString().padStart(2, "0") +
+      now.getMinutes().toString().padStart(2, "0") +
+      now.getSeconds().toString().padStart(2, "0");
 
     const randomNum = Math.floor(Math.random() * 10000); // 0-9999 পর্যন্ত random number
 
@@ -34,7 +35,7 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({
-  storage: storage,
+  storage: multer.memoryStorage(), //storage,
   limits: {
     fileSize: 1024 * 1024 * 5, // max 5MB
   },
