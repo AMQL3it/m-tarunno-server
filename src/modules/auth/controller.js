@@ -9,7 +9,7 @@ const authController = {
 
       res.status(200).json({
         success: result.success,
-        data: result,
+        // data: result,
         token: result.token,
         message: result.message,
       });
